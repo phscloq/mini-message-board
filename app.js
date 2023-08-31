@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,7 +10,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 //connect to mongoDB
-const dbURI = 'mongodb+srv://bdgn:Ln495RwhCNwKvmvX@cluster0.qpi8zif.mongodb.net/node-tuts?retryWrites=true&w=majority';
+const dbURI = process.env.MONGODB_URI;
 mongoose.connect(dbURI)
   .then((result)=>app.listen(5500))
   .catch((err)=>console.log(err));
