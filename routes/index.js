@@ -1,32 +1,15 @@
 var express = require('express');
 var router = express.Router();
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date()
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date()
-  }
-];
+const messageController = require('../controllers/messageController')
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  
-  res.render('index', { title: 'Mini Messageboard', messages:messages });
-});
+router.get('/', messageController.message_get);
 
 router.get('/new', function(req, res){
 
 res.render('form', {title: 'Post'});
 });
 
-router.post('/new', function(req, res){
-  messages.push({text: req.body.messageText, user: req.body.messageUser, added: new Date()});
-  res.redirect('/');
 
-})
+router.post('/new', messageController.message_post);
 
 module.exports = router;
