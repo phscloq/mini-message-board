@@ -9,8 +9,8 @@
     <p>Welcome to <%= title %></p>
     <% messages.forEach(message => {%>
       <div>
-        <h1><%= message.text %></h1>
-        <p><%= message.user %></p>
+        <h1><%= message.message %></h1>
+        <p><%= message.author %></p>
       </div>
      
     <%}); %>
