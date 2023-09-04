@@ -12,7 +12,7 @@ var app = express();
 //connect to mongoDB
 const dbURI = process.env.MONGODB_URI;
 mongoose.connect(dbURI)
-  .then((result)=>app.listen(5500))
+  .then((result)=>app.listen(process.env.PORT || 5500))
   .catch((err)=>console.log(err));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
